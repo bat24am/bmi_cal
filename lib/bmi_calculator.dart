@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 import 'bmi_controller.dart';
 import 'result_screen.dart'; // Import the new ResultScreen
 
+/// Widget for the BMI Calculator screen.
 class BMICalculator extends StatelessWidget {
+ /// Controller for managing BMI calculations.
   final BMIController bmiController = Get.put(BMIController());
 
   @override
@@ -54,9 +56,14 @@ class BMICalculator extends StatelessWidget {
     );
   }
 
+  /// Shows the BMI result using GetX.
+  ///
+  /// Displays a snackbar if the input is invalid; otherwise,
+  /// calculates BMI and navigates to the result screen.
+ 
   void _showBMIResult(BuildContext context) {
   if (bmiController.height.value <= 0 || bmiController.weight.value <= 0) {
-    // Show a snackbar or alert for invalid input
+    
     Get.snackbar(
       'Invalid Input',
       'Please enter valid height and weight.',
@@ -65,7 +72,7 @@ class BMICalculator extends StatelessWidget {
       colorText: Colors.white,
     );
   } else {
-    // Valid input, calculate BMI and navigate to the result screen
+   /// Valid input, calculate BMI and navigate to the result screen
     bmiController.calculateBMI();
     Get.to(ResultScreen(bmiController.bmiResult.value.toStringAsFixed(2)));
   }
