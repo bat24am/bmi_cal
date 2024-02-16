@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+/// Widget for displaying the BMI result.
 class ResultScreen extends StatelessWidget {
+
+  /// The calculated BMI result.
   final String bmiResult;
 
+/// Constructor for ResultScreen.
   ResultScreen(this.bmiResult);
 
   @override
   Widget build(BuildContext context) {
+    // Get the BMI category based on the calculated BMI result.
     String resultCategory = getCategory(double.parse(bmiResult));
 
     return Scaffold(
@@ -48,6 +53,7 @@ class ResultScreen extends StatelessWidget {
     );
   }
 
+ /// Get the BMI category based on the calculated BMI value.
   String getCategory(double bmi) {
     if (bmi < 16) {
       return 'Severe Undernourishment';
@@ -66,6 +72,7 @@ class ResultScreen extends StatelessWidget {
     }
   }
 
+ /// Get the color associated with the BMI category.
    Color getCategoryColor(String category) {
     switch (category) {
       case 'Severe Undernourishment':
@@ -87,3 +94,4 @@ class ResultScreen extends StatelessWidget {
     }
   }
 }
+
